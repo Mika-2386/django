@@ -1,7 +1,13 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+class TaskUser(AbstractUser):
+    ...
+
+
+
 class Task (models.Model):
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     completed = models.BooleanField(default=False)
