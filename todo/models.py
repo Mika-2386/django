@@ -1,15 +1,11 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
-class TaskUser(AbstractUser):
-    ...
-
-
-
-class Task (models.Model):
-
-    title = models.CharField(max_length=255)
+class Todo(models.Model):
+    title = models.CharField(max_length=100)
     description = models.TextField()
     completed = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at  = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
